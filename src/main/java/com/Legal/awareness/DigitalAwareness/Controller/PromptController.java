@@ -3,6 +3,7 @@ package com.Legal.awareness.DigitalAwareness.Controller;
 import com.Legal.awareness.DigitalAwareness.entity.prompt;
 import com.Legal.awareness.DigitalAwareness.entity.reply;
 import com.Legal.awareness.DigitalAwareness.service.promptService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,5 +24,4 @@ public class PromptController
         String ans=promtService.getReply(prompt.getQuery());
         return new ResponseEntity<>(new reply(ans), HttpStatus.OK);
     }
-
 }
