@@ -2,6 +2,7 @@ package com.Legal.awareness.DigitalAwareness.user.entity;
 
 
 import com.Legal.awareness.DigitalAwareness.auth.utilites.Role;
+import com.Legal.awareness.DigitalAwareness.blog.entity.Blog;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

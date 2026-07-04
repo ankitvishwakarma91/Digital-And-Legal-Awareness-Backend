@@ -1,5 +1,6 @@
-package com.Legal.awareness.DigitalAwareness.user.entity;
+package com.Legal.awareness.DigitalAwareness.blog.entity;
 
+import com.Legal.awareness.DigitalAwareness.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,7 +1,7 @@
 package com.Legal.awareness.DigitalAwareness.user.dto;
 
 import com.Legal.awareness.DigitalAwareness.auth.dto.UserResponse;
-import com.Legal.awareness.DigitalAwareness.user.entity.Blog;
+import com.Legal.awareness.DigitalAwareness.blog.entity.Blog;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
