@@ -1,4 +1,4 @@
-package com.Legal.awareness.DigitalAwareness.user.entity;
+package com.Legal.awareness.DigitalAwareness.blog.entity;
 
 public enum BlogStatus {
     DRAFT,
