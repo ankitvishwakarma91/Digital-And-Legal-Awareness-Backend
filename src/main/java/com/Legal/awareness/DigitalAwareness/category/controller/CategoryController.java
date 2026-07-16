@@ -45,16 +45,47 @@ public class CategoryController {
     }
 
 
+    @Operation(
+            summary = "Get All Categories",
+            description = "Returns all active categories."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Categories fetched successfully",
+            content = @Content(schema = @Schema(implementation = CategoryResponse.class))
+    )
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> getAllCategories() {
         List<CategoryResponse> categories = categoryService.getCategories();
         return ResponseEntity.ok(categories);
     }
 
+    @Operation(
+            summary = "Get Category By Id",
+            description = "Returns a category using its ID."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Category fetched successfully",
+            content = @Content(schema = @Schema(implementation = CategoryResponse.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Category not found")
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponse> getCategoryById(@PathVariable Long id) {
         return ResponseEntity.ok(categoryService.getCategoryById(id));
     }
+
+    @Operation(
+            summary = "Update Category",
+            description = "Updates an existing category. Only ADMIN can perform this operation."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Category updated successfully",
+            content = @Content(schema = @Schema(implementation = CategoryResponse.class))
+    )
+    @ApiResponse(responseCode = "403", description = "Only ADMIN can update categories")
+    @ApiResponse(responseCode = "404", description = "Category not found")
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{id}")
@@ -65,6 +96,18 @@ public class CategoryController {
         CategoryResponse categoryResponse = categoryService.updateCategory(id, createCategoryRequest);
         return ResponseEntity.ok(categoryResponse);
     }
+
+    @Operation(
+            summary = "Delete Category",
+            description = "Soft deletes a category. Only ADMIN can perform this operation."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Category deleted successfully",
+            content = @Content(schema = @Schema(implementation = DeleteMessage.class))
+    )
+    @ApiResponse(responseCode = "403", description = "Only ADMIN can delete categories")
+    @ApiResponse(responseCode = "404", description = "Category not found")
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
